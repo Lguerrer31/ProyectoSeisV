@@ -17,6 +17,7 @@ public class EjercicioSeis extends javax.swing.JFrame {
      * Creates new form EjercicioSeis
      */
     double v[];
+    double si, no;
 
     public EjercicioSeis() {
         initComponents();
@@ -195,10 +196,24 @@ public class EjercicioSeis extends javax.swing.JFrame {
     private void cmdLMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLMActionPerformed
         // TODO add your handling code here:
         double n;
+        si = 0;
+        no = 0;
+        int c = v.length - 1;
+        
         for (int i = 0; i < v.length; i++) {
             n = Double.parseDouble(JOptionPane.showInputDialog(this, "Digite el elemento en la posición " + i));
             v[i] = n;
         }
+        
+        for (int i = 0; i < v.length; i++) {
+            if (v[i] == v[c]) {
+                si = si + 1;
+                c = c - 1;
+            } else {
+                no = no + 1;
+            }
+        }
+        
         txtL.setEditable(false);
         cmdC.setEnabled(false);
         cmdLA.setEnabled(false);
@@ -209,10 +224,23 @@ public class EjercicioSeis extends javax.swing.JFrame {
     private void cmdLAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLAActionPerformed
         // TODO add your handling code here:
         double n;
+        si = 0;
+        no = 0;
+        int c = v.length - 1;
         for (int i = 0; i < v.length; i++) {
             n = (int) (Math.random() * 23 + 1);
             v[i] = n;
         }
+        
+        for (int i = 0; i < v.length; i++) {
+            if (v[i] == v[c]) {
+                si = si + 1;
+                c = c - 1;
+            } else {
+                no = no + 1;
+            }
+        }
+        
         JOptionPane.showMessageDialog(this, "Vector llenado satisfactoriamente");
         cmdC.setEnabled(false);
         cmdLA.setEnabled(false);
@@ -225,6 +253,11 @@ public class EjercicioSeis extends javax.swing.JFrame {
         // TODO add your handling code here:
         for (int i = 0; i < v.length; i++) {
             txtR.append("" + v[i] + "\n");
+        }
+        if (si > no) {
+            txtR.append("Es simetrico");
+        } else {
+            txtR.append("No es simetrico");
         }
         txtL.setEditable(false);
         cmdC.setEnabled(false);
